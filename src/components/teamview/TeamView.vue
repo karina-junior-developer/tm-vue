@@ -28,8 +28,7 @@
           <td>
             <div v-if="editing(member, 'name')">
               <TeamConfig
-                :modelValue="editValue"
-                @update:modelValue="editValue = $event"
+                v-model="editValue"
                 @save="handleSaveMember"
                 @cancel="cancelEditing"
               />
@@ -49,8 +48,7 @@
           <td>
             <div v-if="editing(member, 'role')">
               <TeamConfig
-                :modelValue="editValue"
-                @update:modelValue="editValue = $event"
+                v-model="editValue"
                 @save="handleSaveMember"
                 @cancel="cancelEditing"
               />
@@ -71,8 +69,7 @@
           <td>
             <div v-if="editing(member, 'email')">
               <TeamConfig
-                :modelValue="editValue"
-                @update:modelValue="editValue = $event"
+                v-model="editValue"
                 @save="handleSaveMember"
                 @cancel="cancelEditing"
               />
@@ -101,7 +98,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions, mapMutations } from 'vuex';
 import { teamsURL } from '../../constants';
 import TeamConfig from '../teamconfig/TeamConfig.vue';
 
@@ -127,6 +124,13 @@ export default {
   },
   methods: {
     ...mapActions('teams', ['fetchEditTeam', 'fetchEditMember']),
+    ...mapMutations('teams', [
+      'SET_EDIT_TEAM_NAME',
+      'SET_EDIT_MEMBER_NAME',
+      'SET_EDIT_MEMBER_ROLE',
+      'SET_EDIT_MEMBER_EMAIL',
+      'SET_TEAM_ID',
+    ]),
 
     editing(member, field) {
       return (
@@ -146,11 +150,11 @@ export default {
     },
 
     handleSaveTeamName() {
-      this.$store.commit('teams/SET_EDIT_TEAM_NAME', {
+      this.SET_EDIT_TEAM_NAME({
         teamName: this.teamName,
         teamId: this.selectedTeam.id,
       });
-      this.$store.dispatch('teams/fetchEditTeam', teamsURL);
+      this.fetchEditTeam(teamsURL);
       this.isEditingTeamName = false;
     },
     startEditingTeamName() {
@@ -164,31 +168,31 @@ export default {
       const memberId = this.editingMemberField.memberId;
 
       if (field === 'name') {
-        this.$store.commit('teams/SET_EDIT_MEMBER_NAME', {
+        this.SET_EDIT_MEMBER_NAME({
           teamId,
           memberId,
           memberName: this.editValue,
         });
       } else if (field === 'role') {
-        this.$store.commit('teams/SET_EDIT_MEMBER_ROLE', {
+        this.SET_EDIT_MEMBER_ROLE({
           teamId,
           memberId,
           memberRole: this.editValue,
         });
       } else if (field === 'email') {
-        this.$store.commit('teams/SET_EDIT_MEMBER_EMAIL', {
+        this.SET_EDIT_MEMBER_EMAIL({
           teamId,
           memberId,
           memberEmail: this.editValue,
         });
       }
 
-      this.$store.dispatch('teams/fetchEditMember', teamsURL);
+      this.fetchEditMember(teamsURL);
       this.cancelEditing();
     },
 
     goBack() {
-      this.$store.commit('teams/SET_TEAM_ID', null);
+      this.SET_TEAM_ID(null);
     },
   },
 

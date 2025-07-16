@@ -8,13 +8,13 @@
         {
           "id": 1,
           "name": "Alice Smith",
-          "role": "Engineer1",
+          "role": "Engineer",
           "email": "alice@example.com"
         },
         {
           "id": 2,
-          "name": "Bob Johnson1",
-          "role": "Engineer1",
+          "name": "Bob Johnson",
+          "role": "Engineer",
           "email": "bob@example.com"
         }
       ]

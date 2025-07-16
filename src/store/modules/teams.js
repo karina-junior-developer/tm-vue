@@ -1,3 +1,4 @@
+// make separate file for getInitialState and state
 const getInitialEditState = () => {
   return {
     editTeam: {
@@ -24,6 +25,7 @@ const state = () => {
   };
 };
 
+// make separate file
 const mutations = {
   SET_TEAMS(state, teamsValue) {
     state.teams = teamsValue;
@@ -71,6 +73,7 @@ const mutations = {
   },
 };
 
+// make separate file
 const actions = {
   async fetchTeams({ commit }, teamsURL) {
     commit('SET_LOADING', true);
@@ -179,6 +182,7 @@ const actions = {
   },
 };
 
+// make separate file
 const getters = {
   teamId: (state) => state.teamId,
   teams: (state) => state.teams,
