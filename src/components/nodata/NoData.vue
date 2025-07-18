@@ -10,8 +10,8 @@ export default {
 
 <style lang="scss" scoped>
 .noData {
-  margin-top: 150px;
-  margin-left: 50px;
-  font-size: 14px;
+  margin-left: 400px;
+  margin-top: 100px;
+  font-size: 15px;
 }
 </style>

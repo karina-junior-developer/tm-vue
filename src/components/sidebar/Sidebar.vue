@@ -2,13 +2,18 @@
   <div class="sidebar">
     <ul class="sidebarUl">
       <li class="sidebarLi" :key="item.id" v-for="item in sidebarArray">
-        {{ item.title }}
+        <router-link :to="goTo(item)">
+          <button class="sidebarButton">
+            {{ item.title }}
+          </button></router-link
+        >
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { RouterLink } from 'vue-router';
 export default {
   name: 'Sidebar',
   data() {
@@ -20,7 +25,20 @@ export default {
         { id: '004', title: 'Calendar' },
         { id: '005', title: 'Settings' },
       ],
+      routeMap: {
+        Home: '/',
+        'My profile': '/my-profile',
+        Notifications: '/notifications',
+        Calendar: '/calendar',
+        Settings: '/settings',
+      },
     };
+  },
+
+  methods: {
+    goTo(item) {
+      return this.routeMap[item.title] || '/';
+    },
   },
 };
 </script>
@@ -32,15 +50,27 @@ export default {
 
 .sidebarLi {
   list-style: none;
+  padding-bottom: 10px;
+  text-decoration: underline;
+  text-decoration-color: rgb(170, 170, 169);
+}
+
+.sidebarButton {
+  padding: 5px 10px;
+  border-radius: 10px;
   font-size: 14px;
   padding-bottom: 10px;
   width: 100px;
   text-decoration: underline;
   text-decoration-color: rgb(170, 170, 169);
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
 }
 
-.sidebarLi:hover {
-  cursor: pointer;
+.sidebarButton:hover {
+  background-color: rgb(226, 226, 222);
 }
 
 .sidebarUl {

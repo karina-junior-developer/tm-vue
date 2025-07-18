@@ -1,15 +1,15 @@
 <template>
-  <div class="loadingBlock">Loading in process...</div>
+  <div class="notificationsBlock">Notifications page</div>
 </template>
 
 <script>
 export default {
-  name: 'Loading',
+  name: 'Notifications',
 };
 </script>
 
 <style lang="scss" scoped>
-.loadingBlock {
+.notificationsBlock {
   margin-left: 400px;
   margin-top: 100px;
   font-size: 15px;

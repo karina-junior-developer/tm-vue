@@ -33,7 +33,7 @@
                 @cancel="cancelEditing"
               />
             </div>
-            <div v-else>
+            <div class="nameCell" v-else>
               {{ member.name }}
               <button
                 class="editButton"
@@ -54,7 +54,7 @@
               />
             </div>
 
-            <div v-else>
+            <div class="nameCell" v-else>
               {{ member.role }}
               <button
                 class="editButton"
@@ -75,7 +75,7 @@
               />
             </div>
 
-            <div v-else>
+            <div class="nameCell" v-else>
               {{ member.email }}
               <button
                 class="editButton"
@@ -204,15 +204,20 @@ export default {
 
 <style>
 .teamBlock {
-  margin-top: 50px;
-  width: 1000px;
+  margin-top: 150px;
+  width: 900px;
+}
+
+h2 {
+  margin: 0 0 0 2px;
 }
 
 .selectedTeamCaption {
   font-size: 16px;
   margin-bottom: 14px;
-  margin-top: 0;
+  margin-top: 40px;
   padding-top: 7px;
+  margin-right: 5px;
 }
 
 table {
@@ -221,12 +226,14 @@ table {
   font-size: 14px;
 }
 
+tr {
+  height: 40px;
+}
+
 th,
 td {
-  width: 33.33%;
   border: 1px solid black;
   text-align: center;
-  padding: 5px 10px;
   word-wrap: break-word;
 }
 
@@ -259,6 +266,7 @@ td {
 }
 
 .editButton {
+  margin-top: 35px;
   border: none;
   outline: none;
   border-radius: 10px;
@@ -271,6 +279,10 @@ td {
 
 .editButton:hover {
   background: rgb(226, 226, 222);
+}
+
+.nameCell {
+  padding-bottom: 10px;
 }
 
 @media (max-width: 768px) {

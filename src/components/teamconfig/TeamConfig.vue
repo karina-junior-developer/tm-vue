@@ -41,9 +41,12 @@ export default {
 
 <style lang="scss" scoped>
 .teamConfigBlock {
+  margin-top: 40px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 2px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .editingInput {

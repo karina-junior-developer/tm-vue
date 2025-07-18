@@ -13,6 +13,7 @@ export default {
 <style lang="scss" scoped>
 .header {
   margin-top: 50px;
+  margin-left: 65px;
 }
 
 h1 {
