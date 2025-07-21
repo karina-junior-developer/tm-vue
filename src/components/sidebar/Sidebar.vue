@@ -5,8 +5,9 @@
         <router-link :to="goTo(item)">
           <button class="sidebarButton">
             {{ item.title }}
-          </button></router-link
-        >
+            <i :class="getIcon(item.icon)"></i>
+          </button>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -19,11 +20,12 @@ export default {
   data() {
     return {
       sidebarArray: [
-        { id: '001', title: 'Home' },
-        { id: '002', title: 'My profile' },
-        { id: '003', title: 'Notifications' },
-        { id: '004', title: 'Calendar' },
-        { id: '005', title: 'Settings' },
+        { id: '001', title: 'Home', icon: 'home' },
+        { id: '002', title: 'My profile', icon: 'user' },
+        { id: '003', title: 'Notifications', icon: 'volume-down' },
+        { id: '004', title: 'Calendar', icon: 'calendar' },
+        { id: '005', title: 'Settings', icon: 'cog' },
+        { id: '006', title: 'Weather', icon: 'sun' },
       ],
       routeMap: {
         Home: '/',
@@ -31,6 +33,7 @@ export default {
         Notifications: '/notifications',
         Calendar: '/calendar',
         Settings: '/settings',
+        Weather: '/weather',
       },
     };
   },
@@ -38,6 +41,10 @@ export default {
   methods: {
     goTo(item) {
       return this.routeMap[item.title] || '/';
+    },
+
+    getIcon(value) {
+      return `pi pi-${value}`;
     },
   },
 };
@@ -56,17 +63,19 @@ export default {
 }
 
 .sidebarButton {
-  padding: 5px 10px;
   border-radius: 10px;
   font-size: 14px;
-  padding-bottom: 10px;
-  width: 100px;
+  padding: 10px;
   text-decoration: underline;
   text-decoration-color: rgb(170, 170, 169);
   border: none;
   background-color: transparent;
   text-align: left;
   cursor: pointer;
+}
+
+i {
+  margin-left: 5px;
 }
 
 .sidebarButton:hover {

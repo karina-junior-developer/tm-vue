@@ -1,5 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { Calendar, MyProfile, Notifications, Settings, Home } from '../pages';
+import {
+  Calendar,
+  MyProfile,
+  Notifications,
+  Settings,
+  Home,
+  Weather,
+} from '../pages';
 import MainLayout from '../MainLayout.vue';
 
 export default createRouter({
@@ -14,6 +21,7 @@ export default createRouter({
         { path: '/notifications', component: Notifications },
         { path: '/calendar', component: Calendar },
         { path: '/settings', component: Settings },
+        { path: '/weather', component: Weather },
       ],
     },
   ],

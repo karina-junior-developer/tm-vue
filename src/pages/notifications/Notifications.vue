@@ -1,5 +1,7 @@
 <template>
-  <div class="notificationsBlock">Notifications page</div>
+  <div class="notificationsBlock">
+    <div class="caption">Notifications</div>
+  </div>
 </template>
 
 <script>
@@ -13,5 +15,9 @@ export default {
   margin-left: 400px;
   margin-top: 100px;
   font-size: 15px;
+}
+.caption {
+  font-size: 16px;
+  font-weight: bold;
 }
 </style>

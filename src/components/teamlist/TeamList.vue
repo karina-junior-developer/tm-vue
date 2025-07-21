@@ -1,12 +1,15 @@
 <template>
   <div class="teamList">
-    <h2 class="caption">Teams:</h2>
-    <ul class="teamListUl">
+    <h2 class="caption">Teams</h2>
+    <ul>
       <li class="teamListLi" v-for="team in foundValue" :key="team.id">
         <div class="main">
           <div class="title">
-            {{ team.name }}. Created: {{ team.createdAt }}. Members:
-            {{ team.members.length }}
+            <div class="teamName">{{ team.name }}.</div>
+            <div class="createdAndMembers">
+              Created: {{ formatDate(team.createdAt) }}. Members amount:
+              {{ team.members.length }}
+            </div>
           </div>
           <div class="button">
             <button class="detailsButton" @click="onClickView(team.id)">
@@ -33,13 +36,22 @@ export default {
     onClickView(id) {
       this.$store.commit('teams/SET_TEAM_ID', id);
     },
+
+    formatDate(value) {
+      const date = new Date(value);
+      return date.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      });
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .teamList {
-  margin-top: 20px;
+  margin-top: 25px;
   width: 300px;
 }
 
@@ -61,8 +73,12 @@ export default {
 
 .caption {
   margin: 0;
-  font-size: 15px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.teamName {
+  margin-bottom: 10px;
 }
 
 .title {
@@ -75,6 +91,7 @@ export default {
 }
 
 .detailsButton {
+  margin-top: 11px;
   border: none;
   outline: none;
   border-radius: 10px;

@@ -22,7 +22,6 @@ export default {
 
   components: {
     Header,
-
     SideBar,
   },
   computed: {
@@ -51,13 +50,13 @@ export default {
 .appContent {
   display: flex;
   flex: 1;
-  margin-top: 60px;
+  margin-top: 70px;
 }
 
 .sidebarBlock {
   position: fixed;
   width: 20%;
-  margin-top: 200px;
+  margin-top: 150px;
 }
 
 .mainBlock {
